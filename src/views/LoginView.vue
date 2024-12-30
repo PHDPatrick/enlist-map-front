@@ -36,7 +36,7 @@ const login = async () => {
 	// console.log(userInfoStore.info);
 	
 	// 是管理员跳转后台
-	if (userInfoStore.info.role === "1") {
+	if (userInfoStore.info.role == 1) {
 		router.push("/admin");
 	}
 };

@@ -49,7 +49,7 @@ const logout = () => {
 					<span>用户管理</span>
 				</el-menu-item>
 
-				<el-menu-item index="/">
+				<el-menu-item index="/admin/soldier">
 					<el-icon>
 						<Management />
 					</el-icon>

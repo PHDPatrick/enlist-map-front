@@ -38,7 +38,7 @@ instance.interceptors.response.use(
 	result => {
 		//判断业务操作码
 		//成功
-		if (result.data.code == 0) {
+		if (result.data.code == 200) {
 			return result.data;
 		}
 		//失败
@@ -57,6 +57,6 @@ instance.interceptors.response.use(
 			return Promise.reject(err); //异步的状态转化成失败的状态
 		}
 	}
-)
+);
 
 export default instance;

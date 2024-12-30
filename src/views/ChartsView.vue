@@ -21,8 +21,8 @@ const option = ref({
     },
     // 视觉映射组件
     visualMap: {
-        min: optionData.value.min, // 视觉映射的最小值
-        max: optionData.value.max, // 假设数据的最大值为100
+        min: 0, // 视觉映射的最小值
+        max: 100, // 假设数据的最大值为100
         left: 'left', // 左侧显示
         top: 'bottom', // 底部显示
         text: ['高', '低'], // 文本，默认为数值文本

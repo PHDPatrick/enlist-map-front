@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import LoginView from "../views/LoginView.vue";
 import AdminLayoutView from "../views/AdminLayoutView.vue";
+import UserView from "../views/admin/UserView.vue";
 
 
 const routes = [
@@ -15,9 +16,14 @@ const routes = [
 	}, {
 		path: "/admin",
 		component: AdminLayoutView,
-		// redirect: "/user/list",
-		children: []
-	}
+		redirect: "/admin/user",
+		children: [
+			{
+				path: "/admin/user",
+				component: UserView
+			}
+		]
+	},
 ];
 
 

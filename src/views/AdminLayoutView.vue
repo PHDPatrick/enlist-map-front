@@ -1,5 +1,5 @@
 <script setup>
-import { Management, UserFilled, Film, Ticket } from "@element-plus/icons-vue";
+import { Management, UserFilled } from "@element-plus/icons-vue";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { useRouter } from "vue-router";
 import useUserInfoStore from "../stores/userInfo.js";
@@ -12,7 +12,6 @@ const userInfoStore = useUserInfoStore();
  * 退出登录
  */
 const logout = () => {
-	//确认提示
 	ElMessageBox.confirm(
 		"确认退出?",
 		"提示", {
@@ -20,9 +19,7 @@ const logout = () => {
 		cancelButtonText: "取消",
 		type: "warning",
 	}).then(() => {
-		//清空pinia存储的信息
 		userInfoStore.removeInfo();
-		//跳转页面
 		router.push("/login");
 		ElMessage({
 			type: "info",
@@ -45,7 +42,7 @@ const logout = () => {
 			<div class="el-aside__logo"></div>
 			<el-menu active-text-color="#ffd04b" background-color="#232323" text-color="#fff" router>
 
-				<el-menu-item index="/">
+				<el-menu-item index="/admin/user">
 					<el-icon>
 						<UserFilled />
 					</el-icon>
@@ -56,10 +53,10 @@ const logout = () => {
 					<el-icon>
 						<Management />
 					</el-icon>
-					<span>电影院管理</span>
+					<span>入伍数据管理</span>
 				</el-menu-item>
 
-				<el-menu-item index="/">
+				<!-- <el-menu-item index="/">
 					<el-icon>
 						<Film />
 					</el-icon>
@@ -71,7 +68,7 @@ const logout = () => {
 						<Ticket />
 					</el-icon>
 					<span>排片管理</span>
-				</el-menu-item>
+				</el-menu-item> -->
 
 			</el-menu>
 		</el-aside>
@@ -81,8 +78,8 @@ const logout = () => {
 
 			<!-- 头部区域 -->
 			<el-header style="display: flex; justify-content: space-between; align-items: center;">
-				<div> <strong>你好，{{ userInfoStore.info.userName }}</strong> </div>
-				<el-button type="primary" @click="logout"> 退出登录 </el-button>
+				<div> <strong>你好，{{ userInfoStore.info.username }}</strong> </div>
+				<el-button type="danger" @click="logout"> 退出登录 </el-button>
 			</el-header>
 
 			<!-- 中间区域 -->

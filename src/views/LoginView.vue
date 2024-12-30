@@ -32,7 +32,13 @@ const login = async () => {
 	let result = await userLoginService(loginData);
 	ElMessage.success("登录成功");
 	userInfoStore.setInfo(result.data)
-	router.push("/admin");
+	// console.log(result.data);
+	// console.log(userInfoStore.info);
+	
+	// 是管理员跳转后台
+	if (userInfoStore.info.role === "1") {
+		router.push("/admin");
+	}
 };
 </script>
 
@@ -64,7 +70,7 @@ const login = async () => {
 
 <style scoped>
 .box {
-	background-color: darkcyan;
+	/* background-color: darkcyan; */
 	width: 100%;
 	height: 100vh;
 	/*自适应高度*/
@@ -72,9 +78,9 @@ const login = async () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url("../assets/imgs/bg.webp");
+	background-image: url("../assets/img/bg.jpg");
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: cover;
 }
 
 .login-box {
@@ -94,5 +100,12 @@ const login = async () => {
 	font-size: 25px;
 	line-height: 50px;
 	font-weight: bold;
+}
+
+.box /deep/ .el-form-item__label {
+	color: #fff;
+	/* 设置标签文字颜色为白色 */
+	font-weight: bold;
+	/* 加粗字体 */
 }
 </style>

@@ -17,4 +17,4 @@ createApp(App)
 	.use(ElementPlus)
 	.use(router)
 	.use(pinia)
-	.mount('#app')
+	.mount("#app");

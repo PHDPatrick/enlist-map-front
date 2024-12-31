@@ -1,5 +1,5 @@
 <script setup>
-import { Management, UserFilled } from "@element-plus/icons-vue";
+import { Management, UserFilled, Film } from "@element-plus/icons-vue";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { useRouter } from "vue-router";
 import useUserInfoStore from "../stores/userInfo.js";
@@ -56,14 +56,14 @@ const logout = () => {
 					<span>入伍数据管理</span>
 				</el-menu-item>
 
-				<!-- <el-menu-item index="/">
+				<el-menu-item index="/user">
 					<el-icon>
 						<Film />
 					</el-icon>
-					<span>电影管理</span>
+					<span>数据展示</span>
 				</el-menu-item>
 
-				<el-menu-item index="/">
+				<!-- <el-menu-item index="/">
 					<el-icon>
 						<Ticket />
 					</el-icon>

@@ -5,23 +5,20 @@ import { useRouter } from "vue-router";
 import useUserInfoStore from "../stores/userInfo.js";
 
 
+const router = useRouter();
+const userInfoStore = useUserInfoStore();
+
 /**
  * 导入用户相关接口
  */
 import { userLoginService } from "../api/user.js";
 
 
-/**
- * 登录数据
- */
+// 登录数据
 const loginData = ref({
 	username: "",
 	password: ""
 });
-
-
-const router = useRouter();
-const userInfoStore = useUserInfoStore();
 
 
 /**
@@ -38,7 +35,10 @@ const login = async () => {
 	// 是管理员跳转后台
 	if (userInfoStore.info.role == 1) {
 		router.push("/admin");
-	}
+	};
+	if(userInfoStore.info.role == 0){
+		router.push("/user");
+	};
 };
 </script>
 
@@ -78,7 +78,7 @@ const login = async () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url("../assets/img/bg.jpg");
+	background-image: url("../assets/img/login.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }

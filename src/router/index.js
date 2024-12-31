@@ -5,6 +5,7 @@ import LoginView from "../views/LoginView.vue";
 import AdminLayoutView from "../views/AdminLayoutView.vue";
 import UserView from "../views/admin/UserView.vue";
 import SoldierView from "../views/admin/SoldierView.vue";
+import ChartsLayout from "../views/ChartsLayout.vue";
 
 
 const routes = [
@@ -22,12 +23,15 @@ const routes = [
 			{
 				path: "/admin/user",
 				component: UserView
-			},{
+			}, {
 				path: "/admin/soldier",
 				component: SoldierView
 			}
 		]
-	},
+	}, {
+		path: "/user",
+		component: ChartsLayout
+	}
 ];
 
 

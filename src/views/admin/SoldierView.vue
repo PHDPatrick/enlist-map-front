@@ -23,8 +23,6 @@ import {
 const pageNum = ref(1); // 当前页
 const pageSize = ref(3); // 每页条数
 const total = ref(); // 总条数
-const name = ref(); // 姓名
-const province = ref(); // 省份
 // 控制抽屉是否显示
 const visibleDrawer = ref(false);
 const drawerTitle = ref();
@@ -127,8 +125,6 @@ const soldierList = async () => {
 	let params = {
 		pageNum: pageNum.value,
 		pageSize: pageSize.value,
-		name: name.value,
-		province: province.value
 	};
 	let result = await soldierListService(params);
 	// 数据赋值

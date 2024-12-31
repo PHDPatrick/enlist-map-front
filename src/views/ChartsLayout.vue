@@ -16,9 +16,12 @@ import { getChinaMapDataService } from "../api/charts.js";
 
 // 导入其他vue
 import OverviewView from "./user/OverviewView.vue";
+import RadarView from "./user/RadarView.vue";
+import PieView from "./user/PieView.vue";
 // 其他vue的标记
-const chinaViewRef = ref();
 const overviewViewRef = ref();
+const radarViewRef = ref();
+const pieViewRef = ref();
 
 
 const router = useRouter();
@@ -55,7 +58,7 @@ const option = ref({
     },
     series: [
         {
-            name: "enlist",
+            name: "全国入伍大数据",
             type: "map", // series 类型为 map
             mapType: "china", // 使用注册的 china 地图
             roam: false, // 缩放和平移
@@ -96,7 +99,7 @@ const getChinaMapData = async () => {
     let result = await getChinaMapDataService(params);
     mychart.value.setOption({
         series: [{
-            name: "enlist",
+            name: "全国入伍大数据",
             data: result.data
         }]
     });
@@ -110,6 +113,7 @@ const getProvince = (params) => {
     provinceInfoStore.setInfo(params.name);
     // console.log(provinceInfoStore.info);
     selectProvince.value = params.name;
+    radarViewRef.value.getRadarData();
 };
 
 
@@ -124,6 +128,7 @@ const changeYear = () => {
     yearInfoStore.setInfo(selectYear.value);
     // 调用其他页面方法
     overviewViewRef.value.getOverviewData();
+    radarViewRef.value.getRadarData();
 };
 
 
@@ -137,11 +142,6 @@ onMounted(() => {
     );
     mychart.value.setOption(option.value);
     mychart.value.on("click", getProvince);
-});
-
-
-defineExpose({
-    getChinaMapData
 });
 </script>
 
@@ -186,13 +186,15 @@ defineExpose({
                     <!-- 左侧中间区域 -->
                     <div class="left-center">
                         <div class="box">
-                            <span>title</span>
+                            <span>与全国平均对比</span>
+                            <RadarView ref="radarViewRef" />
                         </div>
                     </div>
                     <!-- 左侧底部区域 -->
                     <div class="left-bottom">
                         <div class="box">
-                            <span>title</span>
+                            <span>{{ provinceInfoStore.info }}学历比例</span>
+                            <PieView ref="pieViewRef" />
                         </div>
                     </div>
                 </div>

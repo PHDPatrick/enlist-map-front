@@ -34,3 +34,44 @@ export const getOverviewDataService = (params) => {
 		}
 	});
 };
+
+
+/**
+ * 获取雷达图数据接口
+ */
+export const getRadarDataService = (params) => {
+	// return request.post("/user/radar", params, {
+	// 	headers: {
+	// 		"Content-Type": "application/json"
+	// 	}
+	// });
+	
+	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/radar", params, {
+		headers: {
+			"Content-Type": "application/json"
+		}
+	});
+};
+
+
+/**
+ * 获取饼图数据接口
+ */
+export const getPieDataService = (params) => {
+	// return request.post("/user/pie", params, {
+	// 	headers: {
+	// 		"Content-Type": "application/json"
+	// 	}
+	// });
+	
+	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/pie", params, {
+		headers:{
+			"Content-Type": "application/json"
+		}
+	})
+};
+
+
+/**
+ * 获取排序数据接口
+ */

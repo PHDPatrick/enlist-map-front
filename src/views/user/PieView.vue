@@ -106,11 +106,14 @@ defineExpose({
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5%;
+  // padding-top: 5%;
+  // border: 1px solid red;
 
   .chart {
+    padding-top: 5%;
     width: 80%;
     height: 80%;
+    // border: 1px solid red;
   }
 }
 </style>

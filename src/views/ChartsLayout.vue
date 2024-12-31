@@ -18,10 +18,12 @@ import { getChinaMapDataService } from "../api/charts.js";
 import OverviewView from "./user/OverviewView.vue";
 import RadarView from "./user/RadarView.vue";
 import PieView from "./user/PieView.vue";
+import SortView from "./user/SortView.vue";
 // 其他vue的标记
 const overviewViewRef = ref();
 const radarViewRef = ref();
 const pieViewRef = ref();
+const sortViewRef = ref();
 
 
 const router = useRouter();
@@ -29,7 +31,6 @@ const userInfoStore = useUserInfoStore();
 const yearInfoStore = useYearInfoStore();
 const provinceInfoStore = useProvinceInfoStore();
 const selectYear = ref(2020);
-const selectProvince = ref("河北省");
 const myChartRef = ref();
 const mychart = ref();
 
@@ -107,19 +108,18 @@ const getChinaMapData = async () => {
 getChinaMapData();
 
 
-// 点击地图事件
-const getProvince = (params) => {
-    // console.log(params.name);
-    provinceInfoStore.setInfo(params.name);
-    // console.log(provinceInfoStore.info);
-    selectProvince.value = params.name;
-    radarViewRef.value.getRadarData();
-};
-
-
 // 返回admin
 const backToAdmin = () => {
     router.push("/admin");
+};
+
+
+// 点击地图事件
+const getProvince = (params) => {
+    provinceInfoStore.setInfo(params.name);
+    // 调用其他页面方法
+    radarViewRef.value.getRadarData();
+    pieViewRef.value.getPieData();
 };
 
 
@@ -129,6 +129,8 @@ const changeYear = () => {
     // 调用其他页面方法
     overviewViewRef.value.getOverviewData();
     radarViewRef.value.getRadarData();
+    pieViewRef.value.getPieData();
+    sortViewRef.value.getSortData();
 };
 
 
@@ -209,7 +211,8 @@ onMounted(() => {
                     <!-- 右侧顶部区域 -->
                     <div class="right-top">
                         <div class="box">
-                            <span>title</span>
+                            <span>入伍人数Top5</span>
+                            <SortView ref="sortViewRef"/>
                         </div>
                     </div>
                     <!-- 右侧中间区域 -->

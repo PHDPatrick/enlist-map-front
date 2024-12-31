@@ -9,7 +9,7 @@ export const getChinaMapDataService = (params) => {
 	// 		"Content-Type": "application/json"
 	// 	}
 	// });
-	
+
 	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/map", params, {
 		headers: {
 			"Content-Type": "application/json"
@@ -45,7 +45,7 @@ export const getRadarDataService = (params) => {
 	// 		"Content-Type": "application/json"
 	// 	}
 	// });
-	
+
 	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/radar", params, {
 		headers: {
 			"Content-Type": "application/json"
@@ -63,9 +63,9 @@ export const getPieDataService = (params) => {
 	// 		"Content-Type": "application/json"
 	// 	}
 	// });
-	
+
 	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/pie", params, {
-		headers:{
+		headers: {
 			"Content-Type": "application/json"
 		}
 	})
@@ -75,3 +75,34 @@ export const getPieDataService = (params) => {
 /**
  * 获取排序数据接口
  */
+export const getSortDataService = (params) => {
+	// return request.post("/user/sort", params, {
+	// 	headers: {
+	// 		"Content-Type": "application/json"
+	// 	}
+	// });
+
+	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/sort", params, {
+		headers: {
+			"Content-Type": "application/json"
+		}
+	})
+};
+
+
+/**
+ * 获取折线图数据接口
+ */
+export const getGraphDataService = (params) => {
+	// return request.post("/user/graph", params, {
+	// 	headers: {
+	// 		"Content-Type": "application/json"
+	// 	}
+	// });
+
+	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/graph", params, {
+		headers: {
+			"Content-Type": "application/json"
+		}
+	})
+};

@@ -106,3 +106,21 @@ export const getGraphDataService = (params) => {
 		}
 	})
 };
+
+
+/**
+ * 获得柱状图数据接口
+ */
+export const getHistogramDataService = (params) => {
+	// return request.post("/user/histogram", params, {
+	// 	headers: {
+	// 		"Content-Type": "application/json"
+	// 	}
+	// });
+
+	return request.post("http://127.0.0.1:4523/m1/5662258-5342815-default/user/histogram", params, {
+		headers: {
+			"Content-Type": "application/json"
+		}
+	})
+};

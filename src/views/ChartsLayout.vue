@@ -20,12 +20,14 @@ import RadarView from "./user/RadarView.vue";
 import PieView from "./user/PieView.vue";
 import SortView from "./user/SortView.vue";
 import GraphView from "./user/GraphView.vue";
+import HistogramView from "./user/HistogramView.vue";
 // 其他vue的标记
 const overviewViewRef = ref();
 const radarViewRef = ref();
 const pieViewRef = ref();
 const sortViewRef = ref();
 const graphViewRef = ref();
+const histogramViewRef = ref();
 
 
 const router = useRouter();
@@ -123,12 +125,14 @@ const getProvince = (params) => {
     radarViewRef.value.getRadarData();
     pieViewRef.value.getPieData();
     graphViewRef.value.getGraphData();
+    histogramViewRef.value.getHistogramData();
 };
 
 
 // 监听年份变化
 const changeYear = () => {
     yearInfoStore.setInfo(selectYear.value);
+    getChinaMapData();
     // 调用其他页面方法
     overviewViewRef.value.getOverviewData();
     radarViewRef.value.getRadarData();
@@ -229,7 +233,8 @@ onMounted(() => {
                     <!-- 右侧底部区域 -->
                     <div class="right-bottom">
                         <div class="box">
-                            <span>title</span>
+                            <span>{{provinceInfoStore.info}}入伍年度变化</span>
+                            <HistogramView ref="histogramViewRef"/>
                         </div>
                     </div>
                 </div>

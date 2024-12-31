@@ -1,7 +1,6 @@
 <script setup>
 import * as echarts from "echarts";
 import { ref, onMounted, defineExpose } from "vue";
-import useProvinceInfoStore from "../../stores/provinceInfo";
 import useYearInfoStore from "../../stores/yearInfo";
 
 /**
@@ -9,7 +8,6 @@ import useYearInfoStore from "../../stores/yearInfo";
  */
 import { getSortDataService } from "../../api/charts";
 
-const provinceInfoStore = useProvinceInfoStore();
 const yearInfoStore = useYearInfoStore();
 
 const myChartRef = ref();

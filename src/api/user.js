@@ -31,7 +31,7 @@ export const userListService = () => {
  * 根据id查询用户接口
  */
 export const getUserByIdService = (params) => {
-	// return request.post("/admin/user", params, {
+	// return request.put("/admin/user", params, {
 	// 	headers: {
 	// 		"Content-Type": "application/json"
 	// 	}
@@ -48,7 +48,7 @@ export const getUserByIdService = (params) => {
  * 修改用户信息接口
  */
 export const updateUserService = (user) => {
-	// return request.put("/admin/user", user.value, {
+	// return request.post("/admin/user", user.value, {
 	// 	headers: {
 	// 		"Content-Type": "application/json"
 	// 	}

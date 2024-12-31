@@ -39,7 +39,6 @@ const getSortData = async () => {
   // console.log(456);
   let params = {
     year: yearInfoStore.info,
-    province: provinceInfoStore.info
   };
   let result = await getSortDataService(params);
   // mychart.value.setOption({

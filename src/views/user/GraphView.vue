@@ -7,7 +7,7 @@ import useYearInfoStore from "../../stores/yearInfo";
 /**
  * 导入业务接口
  */
-import { getSortDataService } from "../../api/charts";
+import { getGraphDataService } from "../../api/charts";
 
 const provinceInfoStore = useProvinceInfoStore();
 const yearInfoStore = useYearInfoStore();
@@ -16,17 +16,23 @@ const myChartRef = ref();
 const mychart = ref();
 // // 配置项
 const option = ref({
-  yAxis: {
-    type: "category",
-    data: []
-  },
+  tooltip: {
+      // trigger: 'item'
+    },
   xAxis: {
+    type: "category",
+    boundaryGap: false,
+    data: ["18", "19", "20", "21", "22"]
+  },
+  yAxis: {
     type: "value"
   },
   series: [
     {
+      name: "全国入伍大数据",
       data: [],
-      type: "bar"
+      type: 'line',
+      areaStyle: {}
     }
   ]
 });
@@ -35,90 +41,22 @@ const option = ref({
 /**
  * 获取排序数据接口
  */
-const getSortData = async () => {
+const getGraphData = async () => {
   // console.log(456);
   let params = {
     year: yearInfoStore.info,
     province: provinceInfoStore.info
   };
-  let result = await getSortDataService(params);
-  // mychart.value.setOption({
-  //   series: [{
-  //     name: "全国入伍大数据",
-  //     data: result.data
-  //   }]
-  // });
-  // option.value.yAxis.data=result.data.nameData;
-  // console.log(result.data.nameData);
-  // option.value.series=result.data.countData;
-  // console.log(result.data.countData);
-  // mychart.value.setOption(option.value);
-  let option = {
-    tooltip: {
-      // trigger: 'item'
-    },
-    xAxis: {
-      max: "dataMax"
-    },
-    yAxis: {
-      type: "category",
-      data: result.data.nameData,
-      inverse: true,
-      animationDuration: 300,
-      animationDurationUpdate: 300,
-      show: false
-      // max: 2 // only the largest 3 bars will be displayed
-    },
-    series: [
-      {
-        realtimeSort: true,
-        // name: "全国入伍大数据",
-        type: "bar",
-        data: result.data.countData,
-        label: {
-          show: true,
-          position: "inside",
-          valueAnimation: true
-        },
-        itemStyle: {
-          //normal: {
-          color: {
-            type: "linear",
-            // x=0,y=1,柱子的颜色在垂直方向渐变
-            x: 0,
-            y: 1,
-            colorStops: [
-              // 0%处的颜色
-              {
-                offset: 0,
-                color: "#2F83F7",
-              },
-              // 100%处的颜色
-              {
-                offset: 1,
-                color: "#54CED6",
-              },
-            ],
-            emphasis: {
-              color: "#00feff",
-            },
-            global: false, // 缺省为 false
-          },
-          //},
-        },
-      }
-    ],
-    // legend: {
-    //   show: true
-    // },
-    animationDuration: 0,
-    animationDurationUpdate: 3000,
-    animationEasing: "linear",
-    animationEasingUpdate: "linear"
-  };
+  let result = await getGraphDataService(params);
+  mychart.value.setOption({
+    series: [{
+      name: "全国入伍大数据",
+      data: result.data
+    }]
+  });
   mychart.value.setOption(option);
 };
-getSortData();
+getGraphData();
 
 
 onMounted(() => {
@@ -128,7 +66,7 @@ onMounted(() => {
 
 
 defineExpose({
-  getSortData
+  getGraphData
 });
 </script>
 

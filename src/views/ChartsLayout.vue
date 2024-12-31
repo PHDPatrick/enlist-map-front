@@ -19,11 +19,13 @@ import OverviewView from "./user/OverviewView.vue";
 import RadarView from "./user/RadarView.vue";
 import PieView from "./user/PieView.vue";
 import SortView from "./user/SortView.vue";
+import GraphView from "./user/GraphView.vue";
 // 其他vue的标记
 const overviewViewRef = ref();
 const radarViewRef = ref();
 const pieViewRef = ref();
 const sortViewRef = ref();
+const graphViewRef = ref();
 
 
 const router = useRouter();
@@ -120,6 +122,7 @@ const getProvince = (params) => {
     // 调用其他页面方法
     radarViewRef.value.getRadarData();
     pieViewRef.value.getPieData();
+    graphViewRef.value.getGraphData();
 };
 
 
@@ -131,6 +134,7 @@ const changeYear = () => {
     radarViewRef.value.getRadarData();
     pieViewRef.value.getPieData();
     sortViewRef.value.getSortData();
+    graphViewRef.value.getGraphData();
 };
 
 
@@ -188,7 +192,7 @@ onMounted(() => {
                     <!-- 左侧中间区域 -->
                     <div class="left-center">
                         <div class="box">
-                            <span>与全国平均对比</span>
+                            <span>{{ provinceInfoStore.info }}与全国平均对比</span>
                             <RadarView ref="radarViewRef" />
                         </div>
                     </div>
@@ -218,7 +222,8 @@ onMounted(() => {
                     <!-- 右侧中间区域 -->
                     <div class="right-center">
                         <div class="box">
-                            <span>title</span>
+                            <span>{{provinceInfoStore.info}}入伍年龄统计</span>
+                            <GraphView ref="graphViewRef"/>
                         </div>
                     </div>
                     <!-- 右侧底部区域 -->

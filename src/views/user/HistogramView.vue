@@ -14,6 +14,9 @@ const myChartRef = ref();
 const mychart = ref();
 // // 配置项
 const option = ref({
+  tooltip: {
+    // trigger: 'item'
+  },
   xAxis: {
     type: "category",
     data: ["2020", "2021", "2022", "2023", "2024"]

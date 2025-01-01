@@ -63,7 +63,7 @@ defineExpose({
     }
 
     .data-box-context {
-      font-size: 47px; // 设置字体大小
+      font-size: 67px; // 设置字体大小
     }
   }
 

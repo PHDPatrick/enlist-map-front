@@ -220,21 +220,21 @@ onMounted(() => {
                     <div class="right-top">
                         <div class="box">
                             <span>入伍人数Top5</span>
-                            <SortView ref="sortViewRef"/>
+                            <SortView ref="sortViewRef" />
                         </div>
                     </div>
                     <!-- 右侧中间区域 -->
                     <div class="right-center">
                         <div class="box">
-                            <span>{{provinceInfoStore.info}}入伍年龄统计</span>
-                            <GraphView ref="graphViewRef"/>
+                            <span>{{ provinceInfoStore.info }}入伍年龄统计</span>
+                            <GraphView ref="graphViewRef" />
                         </div>
                     </div>
                     <!-- 右侧底部区域 -->
                     <div class="right-bottom">
                         <div class="box">
-                            <span>{{provinceInfoStore.info}}入伍年度变化</span>
-                            <HistogramView ref="histogramViewRef"/>
+                            <span>{{ provinceInfoStore.info }}入伍年度变化</span>
+                            <HistogramView ref="histogramViewRef" />
                         </div>
                     </div>
                 </div>
@@ -244,6 +244,11 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@font-face {
+    font-family: electronicFont;
+    src: url("../assets/font/DS-DIGI.ttf")
+}
+
 .container {
     width: 100%;
     height: 100vh;
@@ -257,13 +262,13 @@ onMounted(() => {
 .embody {
     width: 100%;
     height: 100%;
-    // border: 1px solid red;
 
     .head-title {
         // width: 100%;
         // height: 80px;
         // // border: 1px solid cyan;
         // // background: url('../../assets/logo.png') no-repeat center / 100%;
+        background: url("../assets//img/head_bg.png") no-repeat center center;
 
         width: 100%;
         height: 80px;
@@ -290,6 +295,9 @@ onMounted(() => {
             grid-area: 1 / 3 / 6 / 6;
             // border: 1px solid red;
             font-size: 47px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
             font-weight: bold;
             text-align: center;
@@ -359,7 +367,13 @@ onMounted(() => {
         padding-left: 8px;
 
         .left-top {
+
             // border: 1px solid red;
+            // font-size: 30px; 
+            color: #0e94ea;
+            font-family: electronicFont;
+            font-weight: bold;
+
         }
 
         .left-center {

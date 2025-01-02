@@ -88,18 +88,6 @@ const provinces = [
 ];
 
 
-// 当每页条数发生了变化，调用此函数
-const onSizeChange = (size) => {
-	pageSize.value = size;
-	// movieList();
-};
-
-// 当前页码发生变化，调用此函数
-const onCurrentChange = (num) => {
-	pageNum.value = num;
-	// movieList();
-};
-
 // 清空soldier数据模型
 const clearSoldier = () => {
 	soldier.value = {
@@ -117,7 +105,6 @@ const clearSoldier = () => {
 };
 
 
-
 /**
  * 分页查询所有soldier接口
  */
@@ -132,6 +119,20 @@ const soldierList = async () => {
 	soldiers.value = result.data.items;
 };
 soldierList();
+
+
+// 当每页条数发生了变化，调用此函数
+const onSizeChange = (size) => {
+	pageSize.value = size;
+	soldierList();
+};
+
+
+// 当前页码发生变化，调用此函数
+const onCurrentChange = (num) => {
+	pageNum.value = num;
+	soldierList();	
+};
 
 
 /**

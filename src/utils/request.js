@@ -49,7 +49,7 @@ instance.interceptors.response.use(
 	},
 	err => {
 		//code为401则未登录
-		if (err.response.status === 401) {
+		if (err.response.code === 401) {
 			ElMessage.error("未登录");
 			router.push("/login")
 		} else {
